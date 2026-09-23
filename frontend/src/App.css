@@ -1,0 +1,688 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #111;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+  min-height: 100vh;
+  background: #111;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 50px;
+
+  z-index: 1000;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.95),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.logo {
+  color: #e50914;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  margin-left: 45px;
+
+  font-size: 14px;
+}
+
+.nav-links span {
+  cursor: pointer;
+  color: #ddd;
+  transition: 0.2s;
+}
+
+.nav-links span:hover {
+  color: white;
+}
+
+.nav-right {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+}
+
+.search {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.profile {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 4px;
+
+  background: #e50914;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  height: 750px;
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  width: 500px;
+
+  margin-left: 60px;
+  margin-top: 80px;
+}
+
+.featured-label {
+  color: #e50914;
+  font-weight: bold;
+
+  letter-spacing: 3px;
+
+  margin-bottom: 15px;
+}
+
+.hero h1 {
+  font-size: 64px;
+  line-height: 1;
+
+  margin-bottom: 20px;
+
+  font-weight: 900;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 12px;
+
+  margin-bottom: 18px;
+
+  color: #ddd;
+}
+
+.hero-description {
+  color: #ddd;
+
+  line-height: 1.6;
+
+  font-size: 16px;
+
+  margin-bottom: 25px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.hero-buttons button {
+  border: none;
+
+  padding: 13px 25px;
+
+  border-radius: 4px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.play-btn {
+  background: white;
+  color: black;
+}
+
+.play-btn:hover {
+  background: #ddd;
+}
+
+.info-btn {
+  background: rgba(100, 100, 100, 0.8);
+  color: white;
+}
+
+.info-btn:hover {
+  background: rgba(130, 130, 130, 0.8);
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+  margin-top: -100px;
+
+  position: relative;
+
+  z-index: 10;
+
+  padding-bottom: 60px;
+}
+
+.movie-section {
+  margin-bottom: 40px;
+}
+
+.movie-section h2 {
+  font-size: 24px;
+
+  margin: 0 0 15px 50px;
+}
+
+/* =========================
+   MOVIE ROW
+========================= */
+
+.movie-row {
+  display: flex;
+
+  gap: 12px;
+
+  overflow-x: auto;
+
+  padding: 10px 50px 20px;
+
+  scrollbar-width: none;
+}
+
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   MOVIE CARD
+========================= */
+
+.movie-card {
+  flex: 0 0 190px;
+
+  height: 285px;
+
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  cursor: pointer;
+
+  background: #222;
+
+  transition:
+    transform 0.3s ease,
+    z-index 0.3s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.movie-card:hover {
+  transform: scale(1.08);
+
+  z-index: 20;
+}
+
+.movie-overlay {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  padding: 45px 12px 12px;
+
+  background: linear-gradient(
+    transparent,
+    rgba(0, 0, 0, 0.95)
+  );
+
+  opacity: 0;
+
+  transition: opacity 0.25s;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-overlay h3 {
+  font-size: 15px;
+
+  margin-bottom: 8px;
+}
+
+.movie-info {
+  display: flex;
+
+  gap: 12px;
+
+  font-size: 12px;
+
+  color: #ccc;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+  text-align: center;
+
+  padding: 100px;
+
+  font-size: 24px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 0 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    height: 650px;
+  }
+
+  .hero-content {
+    margin-left: 30px;
+    width: 450px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .movie-section h2 {
+    margin-left: 25px;
+  }
+
+  .movie-row {
+    padding-left: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .hero {
+    height: 600px;
+  }
+
+  .hero-content {
+    width: calc(100% - 50px);
+    margin-left: 25px;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+
+  .movie-card {
+    flex-basis: 150px;
+    height: 225px;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .logo {
+    font-size: 23px;
+  }
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid transparent;
+
+  padding: 5px 8px;
+
+  transition: 0.25s;
+}
+
+.search-container:focus-within {
+  border-color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.search-icon {
+  font-size: 15px;
+}
+
+.search-container input {
+  width: 0;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+  color: white;
+
+  padding: 5px;
+
+  transition: width 0.3s;
+}
+
+.search-container:focus-within input,
+.search-container input:not(:placeholder-shown) {
+  width: 180px;
+}
+
+.search-container input::placeholder {
+  color: #aaa;
+}
+
+
+/* =========================
+   SEARCH RESULTS
+========================= */
+
+.search-results {
+  padding: 110px 50px 60px;
+  min-height: 100vh;
+
+  background: #111;
+}
+
+.search-results h2 {
+  margin-bottom: 25px;
+
+  font-size: 24px;
+}
+
+.search-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(190px, 1fr));
+
+  gap: 25px;
+}
+
+.no-results {
+  color: #aaa;
+  font-size: 18px;
+}
+
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+  text-align: center;
+
+  padding: 100px;
+
+  color: #ff5555;
+
+  font-size: 18px;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 5000;
+
+  background: rgba(0, 0, 0, 0.85);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  overflow-y: auto;
+}
+
+.movie-modal {
+  width: 900px;
+  max-width: 100%;
+
+  background: #181818;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  position: relative;
+
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.8);
+}
+
+.close-button {
+  position: absolute;
+
+  right: 18px;
+  top: 18px;
+
+  z-index: 20;
+
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.75);
+
+  color: white;
+
+  font-size: 18px;
+
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background: white;
+  color: black;
+}
+
+
+/* =========================
+   MODAL HERO
+========================= */
+
+.modal-hero {
+  height: 430px;
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+}
+
+
+/* =========================
+   MODAL CONTENT
+========================= */
+
+.modal-content {
+  padding: 10px 45px 45px;
+}
+
+.modal-content h1 {
+  font-size: 38px;
+
+  margin-bottom: 15px;
+}
+
+.modal-meta {
+  display: flex;
+
+  gap: 20px;
+
+  color: #ccc;
+
+  margin-bottom: 18px;
+}
+
+.modal-genres {
+  display: flex;
+
+  gap: 8px;
+
+  flex-wrap: wrap;
+
+  margin-bottom: 20px;
+}
+
+.modal-genres span {
+  border: 1px solid #555;
+
+  padding: 5px 10px;
+
+  border-radius: 3px;
+
+  font-size: 13px;
+
+  color: #ddd;
+}
+
+.modal-description {
+  color: #ddd;
+
+  line-height: 1.7;
+
+  font-size: 16px;
+
+  max-width: 750px;
+
+  margin-bottom: 25px;
+}
+
+.modal-play {
+  border: none;
+
+  background: white;
+
+  color: black;
+
+  padding: 12px 25px;
+
+  border-radius: 4px;
+
+  font-size: 16px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.modal-play:hover {
+  background: #ddd;
+}
+
+
+/* =========================
+   RESPONSIVE SEARCH
+========================= */
+
+@media (max-width: 700px) {
+
+  .search-results {
+    padding: 100px 25px 40px;
+  }
+
+  .search-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 15px;
+  }
+
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal-hero {
+    height: 250px;
+  }
+
+  .modal-content {
+    padding: 10px 25px 30px;
+  }
+
+  .modal-content h1 {
+    font-size: 28px;
+  }
+
+}
